@@ -1,0 +1,7 @@
+employee.employee:
+  path: '/employee-data'
+  defaults:
+    _title: 'Employee Details'
+    _form: 'Drupal\employee\Form\EmployeeForm'
+  requirements:
+    _permission: 'access content'

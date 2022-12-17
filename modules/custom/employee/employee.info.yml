@@ -1,0 +1,5 @@
+name: employee
+type: module
+description: This module save employee data in database
+package: Custom
+core_version_requirement: ^9 || ^10
