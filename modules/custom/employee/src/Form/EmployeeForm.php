@@ -4,6 +4,7 @@ namespace Drupal\employee\Form;
 
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Database\Database;
 
 /**
  * Provides a employee form.
@@ -95,6 +96,18 @@ class EmployeeForm extends FormBase {
    * {@inheritdoc}
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
+    $conn = Database::getConnection();
+
+    $formField = $form_state->getValues();
+
+    $formData['emp_firstname'] = $formField['emp_firstname'];
+    $formData['emp_lastname'] = $formField['emp_lastname'];
+    $formData['emp_email'] = $formField['emp_email'];
+    $formData['emp_zipcode'] = $formField['emp_zipcode'];
+
+    $conn->insert('employee')
+      ->fields($formData)->execute();
+
     $this->messenger()->addStatus($this->t('Employee data has been saved successsfully.'));
     $form_state->setRedirect('employee.employee');
   }
