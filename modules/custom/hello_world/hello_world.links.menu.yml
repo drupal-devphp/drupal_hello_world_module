@@ -1,0 +1,7 @@
+hello_world.cred_form:
+  title: 'API Credentials'
+  route_name: hello_world.api_config
+  description: 'API credentials config form'
+  parent: system.admin_config_system
+  weight: 100
+  
